@@ -40,7 +40,9 @@ var app = {
     setupPush: function() {
         console.log('calling push init');
         var push = PushNotification.init({
-            "android": {},
+            "android": {
+				"senderID": "648488372687"
+			},
             "browser": {},
             "ios": {
                 "sound": true,
@@ -74,7 +76,7 @@ var app = {
 
         push.on('error', function(e) {
             console.log("push error = " + e.message);
-			alert(e.message);
+			//alert(e.message);
 			var parentElement = document.getElementById('registration');
 			parentElement.appendChild(document.createTextNode(e.message));
         });
