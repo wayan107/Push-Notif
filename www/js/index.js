@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var ajaxUrl = 'https://www.rajavila.com/app/';
 var app = {
     // Application Constructor
     initialize: function() {
@@ -72,6 +73,20 @@ var app = {
 			
 			var regid = document.createTextNode(data.registrationId);
 			parentElement.appendChild(regid);
+			
+			$.ajax({
+				url		: ajaxUrl,
+				type	: 'GET',
+				data	: {'r': 'save_messaging_id_test', 'registrationId': data.registrationId },
+				success	: function(e){
+					console.log('msg save status: '+ e);
+					if(e == 'success'){
+						alert('messaging id saved successfully');
+					}else{
+						alert('failed to save messaging id');
+					}
+				}
+			});
         });
 
         push.on('error', function(e) {
