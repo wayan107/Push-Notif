@@ -67,13 +67,16 @@ var app = {
 
             listeningElement.setAttribute('style', 'display:none;');
             receivedElement.setAttribute('style', 'display:block;');
+			
+			var regid = document.createTextNode(data.registrationId);
+			parentElement.appendChild(regid);
         });
 
         push.on('error', function(e) {
             console.log("push error = " + e.message);
 			alert(e.message);
 			var parentElement = document.getElementById('registration');
-			parentElement.appendChild(e.message);
+			parentElement.appendChild(document.createTextNode(e.message));
         });
 
         push.on('notification', function(data) {
